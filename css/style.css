@@ -1,0 +1,258 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: #e6e6e6 !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Pelo menos 100% da altura da janela de visualização */
+    margin: 0;
+}
+
+/* TOPO */
+
+#cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+#cabecalho #titulo, #offcanvasNavbarLabel{
+    font-weight: bold;
+    color: rgb(67, 68, 20);
+    font-size: 2em;
+}
+
+.cor-titulo{
+    color: rgb(255, 248, 216);
+}
+
+#barra-de-navegacao ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#barra-de-navegacao ul li {
+    /* border: 1px solid red; */
+    margin: 0 10px;
+}
+
+#barra-de-navegacao ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: brown;
+}
+
+#offcanvasNavbar{
+    border-radius: 10px;
+    background-color: #dbcd87;
+}
+
+.borda-bottom{
+    border-bottom: 0.5px solid #6d5e34;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.fundo-cor{
+    background-color: #dbcd87;
+}
+
+.navbar-nav .nav-link {
+    text-transform: uppercase;
+    color: #6d5e34;
+    padding: 5px;
+}
+
+.navbar-nav .nav-link:hover {
+    text-transform: uppercase;
+    color: rgb(46, 30, 7);
+    background-color:#e6e6e6;
+    padding: 5px;
+}
+
+/* .navbar-toggler-icon {
+    background-color: #FF0000;
+    border-radius: 4px;
+} */
+
+/* CONTEÚDO PRINCIPAL */
+
+.teste1, .teste2{
+    /* min-height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 5%; /* Adicione margens esquerda e direita de 20px */
+
+}
+
+.teste1 main h2,
+.teste2 main h2{
+    color: #3d351d;
+    padding: 2% 0;
+    text-align: center;
+    /* border: 1px solid red; */
+    background-color: #d4d4d1;    
+}
+
+.teste2 main h2{
+    background-color: #e2e2e2;
+}
+
+.teste1{
+    background-color: #dadada;
+}
+
+.teste2{
+    background-color: #e6e6e6;
+}
+
+#flutuar{
+    display: flex;
+    justify-content: space-between;
+}
+
+#flutuar p{
+    margin-right: 20px;
+}
+#flutuar img{
+    max-width: 100%; /* Defina a largura máxima como 100% */
+    height: auto; /* Mantenha a proporção de aspecto original da imagem */
+    margin-left: 20px; /* Adicione margem à esquerda da imagem, se necessário */
+}
+
+#carousel-container{
+    /* border: 1px solid blue; */
+    margin-top: 4.9%;
+}
+
+/* RODAPÉ */
+
+#rodape-elementos{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#rodape-elementos ul{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+#rodape-elementos ul li{
+    list-style-type: none;
+}
+
+#rodape-elementos ul li a{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 10px;
+    color: #6d5e34;
+}
+
+#rodape-elementos ul li a:hover{
+    color: rgb(46, 30, 7);
+}
+
+#rodape-link-amorpet{
+    text-decoration: none;
+    color: #3d351d;
+}
+
+#rodape-link-amorpet:hover{
+    text-decoration: none;
+    color: #000000;
+}
+
+.borda-rodape{
+    border-top: 1px solid #6d5e34;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+/* TODOS OS MEDIA QUERIES SEPARADOS */
+
+/* MEDIA QUERIES DE INÍCIO: */
+
+@media screen and (max-width: 436px){
+    #carousel-container{
+        margin-top: 25%;
+    }
+}
+
+@media screen and (min-width: 436px){
+    #carousel-container{
+        margin-top: 20%;
+    }
+}
+
+@media screen and (min-width: 576px){
+    #carousel-container{
+        margin-top: 12%;
+    }
+
+    #cabecalho{
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: bisque;
+        z-index: 1000;
+    }
+
+    #barra-de-navegacao ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    } 
+}
+
+@media screen and (min-width: 768px){
+    #carousel-container{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #carousel-container{
+        margin-top: 15%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #carousel-container{
+        margin-top: 8%;
+    }
+}
