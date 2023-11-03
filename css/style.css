@@ -34,6 +34,28 @@ body {
     color: rgb(255, 248, 216);
 }
 
+.breadcrumb-container{
+    margin: 0 auto;
+    padding-top: 1%;
+}
+
+.breadcrumb-item a{
+    text-decoration: none;
+    color: #3d351d;
+}
+
+.breadcrumb-item a:hover{
+    color: black;
+}
+
+.breadcrumb-item a:active{
+    color: #aa9862;
+}
+
+.breadcrumb-item a:visited{
+    color: #755800;
+}
+
 #barra-de-navegacao ul {
     display: flex;
     justify-content: space-between;
@@ -150,6 +172,10 @@ body {
     flex: 1;
 }
 
+.badge-primary, .badge-secondary, .badge-third{
+    background-color: rgb(124, 88, 88);
+}
+
 #carousel-container{
     /* border: 1px solid blue; */
     margin-top: 4.9%;
@@ -160,6 +186,8 @@ body {
 footer{
     background-color: #dfdbcc;
     padding-top: 50px;
+    margin-top: auto;
+    width: 100%;
 }
 
 #rodape-elementos{
@@ -232,18 +260,121 @@ footer{
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 2%;
-    border: 1px solid red;
-
+    /* border: 1px solid red; */
 }
 
-/* TODOS OS MEDIA QUERIES SEPARADOS */
+#form-estilizado .label-nova {
+    display: block;
+    margin-bottom: 2%; /* Adicione margem inferior para separar as labels */
+    margin-top: 2%;
+}
 
-/* MEDIA QUERIES DE INÍCIO: */
+#form-estilizado input[type="checkbox"]{
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    transform: scale(1.5);
+}
+
+#form-estilizado input[type="radio"]{
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    transform: scale(1.5);
+}
+
+#form-estilizado input[type="text"], input[type="email"]{
+    width: 100%;
+    padding: 1%;
+    border: none;
+}
+
+fieldset{
+    border: 1px solid rgb(112, 91, 46) !important;
+    padding: 5% !important;
+}
+
+#form-estilizado button{
+    border: none;
+    padding: 2%;
+    background-color: #b6a46e;
+    color: rgb(0, 0, 0);
+}
+
+#form-estilizado button:hover{
+    background-color: #726339;
+    color: rgb(255, 255, 255);
+}
+
+label{
+    font-weight: bolder;
+}
+
+#formulario-adocao fieldset textarea{
+    display: flex;
+    margin: 2% 0;
+    border: none;
+}
+
+#formulario-adocao fieldset select{
+    margin-top: 2%;
+    border: none;
+}
+
+#formulario-adocao input[type="submit"]{
+    border: none;
+    padding: 2%;
+    background-color: #b6a46e;
+    color: rgb(0, 0, 0);
+}
+
+#formulario-adocao input[type="submit"]:hover{
+    background-color: #726339;
+    color: rgb(255, 255, 255);
+}
+
+/* PÁGINA SOBRE NÓS */
+
+#imagens{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* CSS COM JQUERY OU JAVASCRIPT */
+
+#dados-preenchidos, #buttons-container{
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+#buttons-container button{
+    border: none;
+    padding: 1%;
+    background-color: #b6a46e;
+    color: rgb(0, 0, 0);
+}
+
+#buttons-container button:hover{
+    background-color: #726339;
+    color: rgb(255, 255, 255);
+}
+
+.error {
+    color: red;
+  }
+  
+  .campo-com-problema {
+    border: 1px solid red; /* Destacar campos com problema */
+  }
+
+/* TODOS OS MEDIA QUERIES SEPARADOS */
 
 @media screen and (max-width: 436px){
     #carousel-container{
         margin-top: 25%;
     }
+
     #rodape-elementos ul{
         flex-direction:column;
     }
@@ -270,6 +401,15 @@ footer{
         margin-right: 4%;
         margin-bottom: 2%;
     }
+
+    .borda-superior{
+        margin-top: 20%;
+    } 
+
+    #container-formulario{
+        margin-top: 25%;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 436px){
@@ -281,6 +421,10 @@ footer{
         margin-left: 4%;
         margin-right: 4%;
         margin-bottom: 2%;
+    }
+
+    .borda-superior{
+        margin-top: 20%;
     }
 }
 
@@ -299,7 +443,6 @@ footer{
         top: 0;
         left: 0;
         right: 0;
-        background-color: bisque;
         z-index: 1000;
     }
 
@@ -316,6 +459,10 @@ footer{
         margin-left: 4%;
         margin-right: 4%;
         margin-bottom: 2%;
+    }
+
+    .borda-superior{
+        margin-top: 10%;
     }
 }
 
@@ -336,6 +483,11 @@ footer{
         height: auto;
         margin-top: 10px;
     }
+
+    #container-formulario{
+        margin-top: 20%;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -354,6 +506,15 @@ footer{
         max-width: 80%;
         height: auto;
         margin-top: 10px;
+    }
+
+    .borda-superior{
+        margin-top: 15%;
+    }
+
+    #container-formulario{
+        margin-top: 15%;
+        margin-bottom: 5%;
     }
 }
 
@@ -378,6 +539,11 @@ footer{
         max-width: 50%; /* Define a largura máxima da imagem para 50% */
         height: auto;
     }
+
+    #container-formulario{
+        margin-top: 12%;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 993px) and (max-width: 1199px){
@@ -399,6 +565,15 @@ footer{
         max-width: 50%;
         height: auto;
     }
+
+    .borda-superior{
+        margin-top: 10%;
+    }
+    
+    #container-formulario{
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -418,5 +593,14 @@ footer{
     .flutuar img {
         max-width: 30%;
         height: auto;
+    }
+
+    .borda-superior{
+        margin-top: 7%;
+    }
+
+    #container-formulario{
+        margin-top: 6%;
+        margin-bottom: 5%;
     }
 }

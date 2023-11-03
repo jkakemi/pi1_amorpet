@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/js/jquery.js"></script>
 </head>
 
 <body>
@@ -18,7 +21,7 @@
                 <!-- <h1 id="titulo"><a class="navbar-brand" href="#">Amor<span class="cor-titulo">Pet</span></a></h1> -->
                 <nav class="navbar navbar-expand-lg fundo-cor fixed-top">
                     <div class="container-fluid">
-                        <a id="titulo" class="navbar-brand" href="#">Amor<span class="cor-titulo">Pet</span> - Início</a>
+                        <a id="titulo" class="navbar-brand" href="#">Amor<span class="cor-titulo">Pet</span></a>
                         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                             aria-label="Toggle navigation">
@@ -54,32 +57,78 @@
             </div>
         </header>
         <div id="container-formulario">
-            <form action="">
-                <fieldset>
-                    <legend>Formulário</legend>
-                    <label for="">Nome:</label>
-                    <input type="text" name="" id="">
-                    <label for="">Email:</label>
-                    <input type="email" name="" id="">
-                    <label for="">Opções de contato:</label>
-                            <input type="checkbox">
-                            <label for="">E-mail</label>
-                            <input type="checkbox">
-                            <label for="">Telefone</label>
-                            <input type="checkbox">
-                            <label for="">Whatsapp</label>
-                            <input type="checkbox">
-                            <label for="">Sem preferência</label>
-                            <input type="checkbox">
-                    <label for="">Deseja receber notificações?</label>
-                            <input type="radio" name="radio" id="radio">
-                            <label for="">Sim</label>
-                            <input type="radio" name="radio" id="radio">
-                            <label for="">Não</label>
-                    <button>
-                        Enviar
-                    </button>
+            <form name="cadastro" action="agradecimento.html" method="post" id="form-contato">
+                <fieldset id="form-estilizado">
+                    <legend>Entre em contato:</legend>
+                    <label class="label-nova" for="nome">
+                        <i class="fas fa-user"></i> Nome:
+                    </label>
+                    <input type="text" name="nome" id="nome">
+                    <span class="error" id="erro-nome"></span>
+                    <label class="label-nova" for="email">
+                        <i class="fas fa-envelope"></i> Email:
+                    </label>
+                    <input type="email" name="email" id="email">
+                    <span class="error" id="erro-email"></span>
+                    <label class="label-nova" for="telefone">
+                        <i class="fas fa-user"></i> Telefone:
+                    </label>
+                    <input type="text" name="telefone" id="telefone">
+                    <span class="error" id="erro-telefone"></span>
+                    <label class="label-nova" for="opcoes-contato">
+                        <i class="fas fa-phone"></i> Opções de contato:
+                    </label>
+                    <input type="checkbox" name="box">
+                    <label for="email"><i class="fas fa-envelope"></i> E-mail</label>
+                    <input type="checkbox" name="box">
+                    <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
+                    <input type="checkbox" name="box">
+                    <label for="whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp</label>
+                    <input type="checkbox" name="box">
+                    <label for="nenhum"><i class="far fa-circle"></i> Sem preferência</label>
+
+                    <div>
+                        <label for="opcao">Selecione uma das opções: </label>
+                        <div>
+                            <select name="opcao" id="opcao">
+                                <option value="">Selecione</option>
+                                <option value="D">Dúvida</option>
+                                <option value="S">Sugestão</option>
+                                <option value="R">Reclamação</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea name="opcao1" id="opcao1" cols="30" rows="10" maxlength="2000"></textarea>
+                    </div>
+                    <label class="label-nova" for="receberNotificacoes">
+                        <i class="far fa-bell"></i> Deseja receber notificações?
+                    </label>
+                    <label for="sim">Sim</label>
+                    <input type="radio" name="receberNotificacoes" id="sim">
+                    <label for="nao">Não</label>
+                    <input type="radio" name="receberNotificacoes" id="nao">
+                    <button id="verificar">Verificar</button>
                 </fieldset>
+            </form>
+        </div>
+        <div id="visualizacao" style="display: none;">
+            <div id="dados-preenchidos">
+                <h2>Informações submetidas:</h2>
+                <p>Nome: <span id="nome-preenchido"></span></p>
+                <p>Email: <span id="email-preenchido"></span></p>
+                <p>Telefone: <span id="telefone-preenchido"></span></p>
+                <p>Opções contato: <span id="opcoes-contato-preenchido"></span></p>
+                <p>Selecionado: <span id="opcao-preenchida"></span></p>
+                <p>Texto: <span id="opcao1-preenchida"></span></p>
+                <p>Notificações ativas: <span id="receber-notificacoes-preenchido"></span></p>
+            </div>
+            <form action="agradecimento.html">
+                <div id="buttons-container">
+                    <button id="limpar">Limpar e Recomeçar</button>
+                    <button id="alterar">Alterar Dados</button>
+                    <button id="enviar" type="submit">Enviar</button>
+                </div>
             </form>
         </div>
         <footer>
@@ -105,14 +154,25 @@
                 </div>
                 <div class="borda-rodape"></div>
                 <p>
-                    2023 <a id="rodape-link-amorpet" href="index.html">AmorPet</a> - Todos os direitos reservados.
+                    <span class="badge badge-pill badge-primary">Premium Pet</span>
+                    <span class="badge badge-pill badge-secondary">First Win</span>
+                    <span class="badge badge-pill badge-third">Best Adopt</span>
                 </p>
                 <p>
-                    Promovida pela Universidade Federal de Uberlândia.
+                    <a id="rodape-link-amorpet" href="index.html">AmorPet</a> - &copy; Copyright 2023
+                </p>
+                <p>
+                    Todos os direitos reservados
                 </p>
             </div>
         </footer>
     </div>
+    <nav aria-label="breadcrumb" class="breadcrumb-container ml-auto mt-50">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">AmorPet</li>
+            <li class="breadcrumb-item"><a href="/">Contato</a></li>
+        </ol>
+    </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
