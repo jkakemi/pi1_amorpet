@@ -55,7 +55,8 @@ body {
 }
 
 #offcanvasNavbar{
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     background-color: #dbcd87;
 }
 
@@ -88,6 +89,10 @@ body {
 } */
 
 /* CONTEÚDO PRINCIPAL */
+
+.borda-superior{
+    margin-top: 5%;
+}
 
 .teste1, .teste2{
     /* min-height: 50vh; */
@@ -127,18 +132,22 @@ body {
     background-color: #e6e6e6;
 }
 
-#flutuar{
+.flutuar{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#flutuar p{
-    margin-right: 20px;
+.flutuar p{
+    margin-top: 2%;
+    margin-right: 10%;
+    /* border: 1px solid red; */
+    flex: 1;
 }
-#flutuar img{
-    max-width: 100%; /* Defina a largura máxima como 100% */
-    height: auto; /* Mantenha a proporção de aspecto original da imagem */
-    margin-left: 20px; /* Adicione margem à esquerda da imagem, se necessário */
+.flutuar img{
+    max-width: 35%;
+    height: auto;
+    flex: 1;
 }
 
 #carousel-container{
@@ -148,6 +157,11 @@ body {
 
 /* RODAPÉ */
 
+footer{
+    background-color: #dfdbcc;
+    padding-top: 50px;
+}
+
 #rodape-elementos{
     text-align: center;
     padding: 0;
@@ -156,7 +170,7 @@ body {
 
 #rodape-elementos ul{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     padding: 0;
     margin: 0;
 }
@@ -192,6 +206,34 @@ body {
     width: 80%;
     margin: 0 auto;
     margin-top: 10px;
+    margin-bottom: 2%;
+}
+
+#organizacao-recursos{
+    display: flex; /* Usar flexbox para organizar as colunas lado a lado */
+    justify-content: space-between; /* Espaço entre as colunas */
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 2%;
+}
+
+.recursos{
+    flex: 1;
+}
+
+.organizacao{
+    flex: 1;
+}
+
+/* FORMULARIO PARA CONTATO */
+
+#container-formulario{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border: 1px solid red;
+
 }
 
 /* TODOS OS MEDIA QUERIES SEPARADOS */
@@ -202,11 +244,43 @@ body {
     #carousel-container{
         margin-top: 25%;
     }
+    #rodape-elementos ul{
+        flex-direction:column;
+    }
+    .flutuar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flutuar p{
+        margin: 0 auto;
+        flex: 1;
+        margin-bottom: 5%;
+    }
+
+    .flutuar img{
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    #organizacao-recursos{
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 2%;
+    }
 }
 
 @media screen and (min-width: 436px){
     #carousel-container{
         margin-top: 20%;
+    }
+
+    #organizacao-recursos{
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 2%;
     }
 }
 
@@ -237,22 +311,112 @@ body {
         padding: 0;
         margin: 0;
     } 
-}
 
-@media screen and (min-width: 768px){
-    #carousel-container{
-        margin-top: 10%;
+    #organizacao-recursos{
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 2%;
     }
 }
 
-@media screen and (min-width: 992px){
+@media screen and (max-width: 576px) {
+    .flutuar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flutuar p{
+        margin: 0 auto;
+        margin: 2% 0;
+    }
+
+    .flutuar img {
+        max-width: 90%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    .flutuar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flutuar p{
+        margin: 0 auto;
+        margin: 2% 0;
+    }
+
+    .flutuar img {
+        max-width: 80%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    #carousel-container{
+        margin-top: 10%;
+    }
+
+    .flutuar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flutuar p {
+        flex: 1;
+        margin: 0 auto;
+        margin-bottom: 3%;
+    }
+
+    .flutuar img {
+        max-width: 50%; /* Define a largura máxima da imagem para 50% */
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1199px){
     #carousel-container{
         margin-top: 15%;
+    }
+
+    .flutuar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flutuar p {
+        flex: 1;
+    }
+
+    .flutuar img {
+        max-width: 50%;
+        height: auto;
     }
 }
 
 @media screen and (min-width: 1200px) {
     #carousel-container{
         margin-top: 8%;
+    }
+    .flutuar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .flutuar p {
+        flex: 1;
+    }
+
+    .flutuar img {
+        max-width: 30%;
+        height: auto;
     }
 }
