@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const formularioAdocao = document.getElementById("formulario-adocao");
   const escolhido = document.getElementById("animal");
   const badgeContainer = document.getElementById("badge-container");
 
@@ -24,17 +23,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
   escolhido.addEventListener("change", atualizarBadge);
 
-  formularioAdocao.addEventListener("submit", function (event) {
-    if (escolhido.value === "gato") {
+  const formAdote = document.getElementById("formulario-adocao");
+
+  formAdote.onsubmit = function (event) {
+    validarFormulario(event);
+  };
+
+  document.getElementById("verificar").addEventListener("click", function () {
+    validarFormulario();
+  });
+
+  function validarFormulario(event) {
+    event.preventDefault();
+
+    let formValido = true;
+
+    const nome = document.getElementById("nome").value;
+    const erroNome = document.getElementById("erro-nome");
+    const email = document.getElementById("email").value;
+    const erroEmail = document.getElementById("erro-email");
+    const telefone = document.getElementById("telefone").value;
+    const erroTelefone = document.getElementById("erro-telefone");
+    const opSelect = document.getElementById("animal");
+
+    if (nome === "") {
+      erroNome.textContent = "Nome deve ser preenchido!";
+      document.getElementById("nome").classList.add("error");
+      formValido = false;
+    } else {
+      erroNome.textContent = "";
+      document.getElementById("nome").classList.remove("error");
+    }
+
+    if (email === "") {
+      erroEmail.textContent = "Email deve ser preenchido!";
+      document.getElementById("email").classList.add("error");
+      formValido = false;
+    } else {
+      erroEmail.textContent = "";
+      document.getElementById("email").classList.remove("error");
+    }
+
+    if (telefone === "") {
+      erroTelefone.textContent = "Telefone deve ser preenchido!";
+      document.getElementById("telefone").classList.add("error");
+      formValido = false;
+    } else {
+      erroTelefone.textContent = "";
+      document.getElementById("telefone").classList.remove("error");
+    }
+
+    if (opSelect.value === "gato") {
       alert(
         "Gatos não estão disponíveis para adoção no momento. Por favor, escolha outra opção."
       );
-      event.preventDefault();
+      formValido = false;
     }
-  });
+
+    if (formValido) {
+      formAdote.submit();
+    }
+  }
 });
 
-/* VALIDAÇÃO DE FORMULÁRIO */
+/* VALIDAÇÃO DE FORMULÁRIO DE CONTATO */
 
 document.addEventListener("DOMContentLoaded", function () {
   const formContato = document.getElementById("form-contato");
@@ -42,12 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const dadosPreenchidos = document.getElementById("dados-preenchidos");
 
   formContato.onsubmit = function (event) {
-      event.preventDefault();
-      validarFormulario();
+    event.preventDefault();
+    // validarFormulario(); ele manda duas vezes
   };
 
   document.getElementById("verificar").addEventListener("click", function () {
-      validarFormulario();
+    validarFormulario();
   });
 
   document.getElementById("limpar").addEventListener("click", function () {
@@ -57,95 +109,122 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById("alterar").addEventListener("click", function () {
-      visualizacao.style.display = "none";
-      formContato.style.display = "block";
+    visualizacao.style.display = "none";
+    formContato.style.display = "block";
   });
 
   function validarFormulario() {
-      let formValido = true;
+    let formValido = true;
 
-      const nome = document.getElementById("nome").value;
-      const erroNome = document.getElementById("erro-nome");
-      const email = document.getElementById("email").value;
-      const erroEmail = document.getElementById("erro-email");
-      const telefone = document.getElementById("telefone").value;
-      const erroTelefone = document.getElementById("erro-telefone");
-      const sim = document.getElementById("sim");
-      const nao = document.getElementById("nao");
+    const nome = document.getElementById("nome").value;
+    const erroNome = document.getElementById("erro-nome");
+    const email = document.getElementById("email").value;
+    const erroEmail = document.getElementById("erro-email");
+    const telefone = document.getElementById("telefone").value;
+    const erroTelefone = document.getElementById("erro-telefone");
+    const sim = document.getElementById("sim");
+    const nao = document.getElementById("nao");
 
-      if (nome === "") {
-          erroNome.textContent = "Nome deve ser preenchido!";
-          document.getElementById("nome").classList.add("error");
-          formValido = false;
-      } else {
-          erroNome.textContent = "";
-          document.getElementById("nome").classList.remove("error");
-      }
+    const check = document.querySelectorAll(
+      "input[name='box']:checked"
+    );
+    if (check.length === 0) {
+      alert("Selecione pelo menos uma opção de contato.");
+      formValido = false;
+    }
 
-      if (email === "") {
-          erroEmail.textContent = "Email deve ser preenchido!";
-          document.getElementById("email").classList.add("error");
-          formValido = false;
-      } else {
-          erroEmail.textContent = "";
-          document.getElementById("email").classList.remove("error");
-      }
+    const radio = document.querySelectorAll("input[name='receberNotificacoes']:checked");
+    if (radio.length === 0) {
+        alert("Selecione 'Sim' ou 'Não' para receber notificações.");
+        formValido = false;
+    }
 
-      if (telefone === "") {
-          erroTelefone.textContent = "Telefone deve ser preenchido!";
-          document.getElementById("telefone").classList.add("error");
-          formValido = false;
-      } else {
-          erroTelefone.textContent = "";
-          document.getElementById("telefone").classList.remove("error");
-      }
+    const opContato = document.getElementById("opcao").value;
+    if (opContato === "") {
+        alert("Selecione o seu objetivo.");
+        formValido = false;
+    }
 
-      if (!sim.checked && !nao.checked) {
-          alert("Selecione 'Sim' ou 'Não' para receber notificações.");
-          formValido = false;
-      }
+    const mensagem = document.getElementById("opcao1").value;
+    if (mensagem.trim() === "") {
+        alert("Informe a sua situação");
+        formValido = false;
+    }
 
-      if (formValido) {
-          exibirDadosPreenchidos();
-      }
+    if (nome === "") {
+      erroNome.textContent = "Nome deve ser preenchido!";
+      document.getElementById("nome").classList.add("error");
+      formValido = false;
+    } else {
+      erroNome.textContent = "";
+      document.getElementById("nome").classList.remove("error");
+    }
+
+    if (email === "") {
+      erroEmail.textContent = "Email deve ser preenchido!";
+      document.getElementById("email").classList.add("error");
+      formValido = false;
+    } else {
+      erroEmail.textContent = "";
+      document.getElementById("email").classList.remove("error");
+    }
+
+    if (telefone === "") {
+      erroTelefone.textContent = "Telefone deve ser preenchido!";
+      document.getElementById("telefone").classList.add("error");
+      formValido = false;
+    } else {
+      erroTelefone.textContent = "";
+      document.getElementById("telefone").classList.remove("error");
+    }
+
+    if (!sim.checked && !nao.checked) {
+      alert("Selecione 'Sim' ou 'Não' para receber notificações.");
+      formValido = false;
+    }
+
+    if (formValido) {
+      mostrarDados();
+    }
   }
 
-  function exibirDadosPreenchidos() {
-      const nome = document.getElementById("nome").value;
-      const email = document.getElementById("email").value;
-      const telefone = document.getElementById("telefone").value;
-      const opcoesContato = Array.from(
-          document.querySelectorAll("input[name='box']:checked")
-      ).map(function (checkbox) {
-          return checkbox.nextElementSibling.textContent;
-      });
-      const opcao =
-          document.getElementById("opcao").options[
-              document.getElementById("opcao").selectedIndex
-          ].textContent;
-      const opcao1 = document.getElementById("opcao1").value;
-      const radios = document.getElementsByName("receberNotificacoes");
+  function mostrarDados() {
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const telefone = document.getElementById("telefone").value;
+    const opcoesContato = Array.from(
+      document.querySelectorAll("input[name='box']:checked")
+    ).map(function (checkbox) {
+      return checkbox.nextElementSibling.textContent;
+    });
+    const opcao =
+      document.getElementById("opcao").options[
+        document.getElementById("opcao").selectedIndex
+      ].textContent;
+    const opcao1 = document.getElementById("opcao1").value;
+    const radios = document.getElementsByName("receberNotificacoes");
 
-      let opSelect = "";
+    let opSelect = "";
 
-      for (const radio of radios) {
-          if (radio.checked) {
-              opSelect = radio.id;
-              break;
-          }
+    for (const radio of radios) {
+      if (radio.checked) {
+        opSelect = radio.id;
+        break;
       }
+    }
 
-      document.getElementById("nome-preenchido").textContent = nome;
-      document.getElementById("email-preenchido").textContent = email;
-      document.getElementById("telefone-preenchido").textContent = telefone;
-      document.getElementById("opcoes-contato-preenchido").textContent =
-          opcoesContato.join(", ");
-      document.getElementById("opcao-preenchida").textContent = opcao;
-      document.getElementById("opcao1-preenchida").textContent = opcao1;
-      document.getElementById("receber-notificacoes-preenchido").textContent = opSelect;
+    document.getElementById("nome-preenchido").textContent = nome;
+    document.getElementById("email-preenchido").textContent = email;
+    document.getElementById("telefone-preenchido").textContent = telefone;
+    document.getElementById("opcoes-contato-preenchido").textContent =
+      opcoesContato.join(", ");
+    document.getElementById("opcao-preenchida").textContent = opcao;
+    document.getElementById("opcao1-preenchida").textContent = opcao1;
+    document.getElementById("receber-notificacoes-preenchido").textContent =
+      opSelect;
 
-      visualizacao.style.display = "block";
-      formContato.style.display = "none";
-      dadosPreenchidos.style.display = "block";
+    visualizacao.style.display = "block";
+    formContato.style.display = "none";
+    dadosPreenchidos.style.display = "block";
   }
 });

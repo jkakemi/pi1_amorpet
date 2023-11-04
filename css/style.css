@@ -6,7 +6,7 @@ body {
     background-color: #e6e6e6 !important;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Pelo menos 100% da altura da janela de visualização */
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -66,7 +66,6 @@ body {
 }
 
 #barra-de-navegacao ul li {
-    /* border: 1px solid red; */
     margin: 0 10px;
 }
 
@@ -105,11 +104,6 @@ body {
     padding: 5px;
 }
 
-/* .navbar-toggler-icon {
-    background-color: #FF0000;
-    border-radius: 4px;
-} */
-
 /* CONTEÚDO PRINCIPAL */
 
 .borda-superior{
@@ -117,7 +111,6 @@ body {
 }
 
 .teste1, .teste2{
-    /* min-height: 50vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,7 +122,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5% 5%; /* Adicione margens esquerda e direita de 20px */
+    padding: 5% 5%;
 
 }
 
@@ -138,7 +131,6 @@ body {
     color: #3d351d;
     padding: 2% 0;
     text-align: center;
-    /* border: 1px solid red; */
     background-color: #d4d4d1;    
 }
 
@@ -163,7 +155,6 @@ body {
 .flutuar p{
     margin-top: 2%;
     margin-right: 10%;
-    /* border: 1px solid red; */
     flex: 1;
 }
 .flutuar img{
@@ -177,7 +168,6 @@ body {
 }
 
 #carousel-container{
-    /* border: 1px solid blue; */
     margin-top: 4.9%;
 }
 
@@ -238,8 +228,8 @@ footer{
 }
 
 #organizacao-recursos{
-    display: flex; /* Usar flexbox para organizar as colunas lado a lado */
-    justify-content: space-between; /* Espaço entre as colunas */
+    display: flex;
+    justify-content: space-between;
     margin-left: 30%;
     margin-right: 30%;
     margin-bottom: 2%;
@@ -260,12 +250,11 @@ footer{
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 2%;
-    /* border: 1px solid red; */
 }
 
 #form-estilizado .label-nova {
     display: block;
-    margin-bottom: 2%; /* Adicione margem inferior para separar as labels */
+    margin-bottom: 2%;
     margin-top: 2%;
 }
 
@@ -341,11 +330,36 @@ label{
     margin: 0 auto;
 }
 
+#equipeimg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.equipe-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.equipe-container img{
+    width: 90%;
+    border-radius: 100%;
+    margin-bottom: 2%;
+}
+
 /* CSS COM JQUERY OU JAVASCRIPT */
 
 #dados-preenchidos, #buttons-container{
     text-align: center;
     margin-bottom: 2%;
+}
+
+#buttons-container #enviar{
+    display: inline;
+} 
+
+#buttons-container form{
+    display: inline;
 }
 
 #buttons-container button{
@@ -362,10 +376,6 @@ label{
 
 .error {
     color: red;
-  }
-  
-  .campo-com-problema {
-    border: 1px solid red; /* Destacar campos com problema */
   }
 
 /* TODOS OS MEDIA QUERIES SEPARADOS */
@@ -536,7 +546,7 @@ label{
     }
 
     .flutuar img {
-        max-width: 50%; /* Define a largura máxima da imagem para 50% */
+        max-width: 50%;
         height: auto;
     }
 
