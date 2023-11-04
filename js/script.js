@@ -50,10 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
       erroNome.textContent = "Nome deve ser preenchido!";
       document.getElementById("nome").classList.add("error");
       formValido = false;
-    } else if (nome.indexOf(" ") <= 0) {
-      erroNome.textContent = "Informe nome e sobrenome válidos!";
-      document.getElementById("nome").classList.add("error");
-      formValido = false;
     } else {
       erroNome.textContent = "";
       document.getElementById("nome").classList.remove("error");
@@ -61,14 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (email === "") {
       erroEmail.textContent = "Email deve ser preenchido!";
-      document.getElementById("email").classList.add("error");
-      formValido = false;
-    } else if (
-      email.indexOf("@") < 1 ||
-      email.lastIndexOf(".") < email.indexOf("@") + 2 ||
-      email.lastIndexOf(".") + 2 >= email.length
-    ) {
-      erroEmail.textContent = "Email inválido!";
       document.getElementById("email").classList.add("error");
       formValido = false;
     } else {
