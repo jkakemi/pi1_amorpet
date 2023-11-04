@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
       erroNome.textContent = "Nome deve ser preenchido!";
       document.getElementById("nome").classList.add("error");
       formValido = false;
-    } else if (nome.value.indexOf(" ") <= 0) {
+    } else if (nome.indexOf(" ") <= 0) {
       erroNome.textContent = "Informe nome e sobrenome válidos!";
       document.getElementById("nome").classList.add("error");
       formValido = false;
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("email").classList.add("error");
       formValido = false;
     } else if (
-      email.value.indexOf("@") < 2 ||
-      email.value.indexOf(".") < email.value.indexOf("@") + 2 ||
-      email.value.indexOf(".") == email.value.length
+      email.indexOf("@") < 1 ||
+      email.lastIndexOf(".") < email.indexOf("@") + 2 ||
+      email.lastIndexOf(".") + 2 >= email.length
     ) {
       erroEmail.textContent = "Email inválido!";
       document.getElementById("email").classList.add("error");
@@ -86,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (opSelect.value === "gato") {
-      alert(
-        "Gatos não estão disponíveis para adoção no momento. Por favor, escolha outra opção."
-      );
+      alert("Gatos não estão disponíveis para adoção no momento. Por favor, escolha outra opção.");
       formValido = false;
     }
 
