@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
       erroNome.textContent = "Nome deve ser preenchido!";
       document.getElementById("nome").classList.add("error");
       formValido = false;
+    } else if (nome.value.indexOf(" ") <= 0) {
+      erroNome.textContent = "Informe nome e sobrenome válidos!";
+      document.getElementById("nome").classList.add("error");
+      formValido = false;
     } else {
       erroNome.textContent = "";
       document.getElementById("nome").classList.remove("error");
@@ -57,6 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (email === "") {
       erroEmail.textContent = "Email deve ser preenchido!";
+      document.getElementById("email").classList.add("error");
+      formValido = false;
+    } else if (
+      email.value.indexOf("@") < 2 ||
+      email.value.indexOf(".") < email.value.indexOf("@") + 2 ||
+      email.value.indexOf(".") == email.value.length
+    ) {
+      erroEmail.textContent = "Email inválido!";
       document.getElementById("email").classList.add("error");
       formValido = false;
     } else {
@@ -125,34 +137,38 @@ document.addEventListener("DOMContentLoaded", function () {
     const sim = document.getElementById("sim");
     const nao = document.getElementById("nao");
 
-    const check = document.querySelectorAll(
-      "input[name='box']:checked"
-    );
+    const check = document.querySelectorAll("input[name='box']:checked");
     if (check.length === 0) {
       alert("Selecione pelo menos uma opção de contato.");
       formValido = false;
     }
 
-    const radio = document.querySelectorAll("input[name='receberNotificacoes']:checked");
+    const radio = document.querySelectorAll(
+      "input[name='receberNotificacoes']:checked"
+    );
     if (radio.length === 0) {
-        alert("Selecione 'Sim' ou 'Não' para receber notificações.");
-        formValido = false;
+      alert("Selecione 'Sim' ou 'Não' para receber notificações.");
+      formValido = false;
     }
 
     const opContato = document.getElementById("opcao").value;
     if (opContato === "") {
-        alert("Selecione o seu objetivo.");
-        formValido = false;
+      alert("Selecione o seu objetivo.");
+      formValido = false;
     }
 
     const mensagem = document.getElementById("opcao1").value;
     if (mensagem.trim() === "") {
-        alert("Informe a sua situação");
-        formValido = false;
+      alert("Informe a sua situação");
+      formValido = false;
     }
 
     if (nome === "") {
       erroNome.textContent = "Nome deve ser preenchido!";
+      document.getElementById("nome").classList.add("error");
+      formValido = false;
+    } else if (nome.indexOf(" ") <= 0) {
+      erroNome.textContent = "Informe nome e sobrenome válidos!";
       document.getElementById("nome").classList.add("error");
       formValido = false;
     } else {
@@ -162,6 +178,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (email === "") {
       erroEmail.textContent = "Email deve ser preenchido!";
+      document.getElementById("email").classList.add("error");
+      formValido = false;
+    } else if (
+      email.indexOf("@") < 1 ||
+      email.lastIndexOf(".") < email.indexOf("@") + 2 ||
+      email.lastIndexOf(".") + 2 >= email.length
+    ) {
+      erroEmail.textContent = "Email inválido!";
       document.getElementById("email").classList.add("error");
       formValido = false;
     } else {
